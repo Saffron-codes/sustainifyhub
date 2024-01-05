@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class RewardsView extends StatelessWidget {
   const RewardsView({super.key});
@@ -28,10 +29,11 @@ class RewardsView extends StatelessWidget {
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) => Card(
               child: ListTile(
-                title: Text("Earned 10 coins"),
-                subtitle: Text("10d ago"),
+                title: Text("Level ${index + 1}"),
+                subtitle: Text(
+                    "Earn ${(index + 1) + Random().nextInt(10) * 10} to unlock"),
                 leading: Icon(
-                  Icons.money,
+                  Icons.price_change,
                   color: Colors.grey,
                 ),
               ),
