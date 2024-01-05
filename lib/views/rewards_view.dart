@@ -36,6 +36,7 @@ class RewardsView extends StatelessWidget {
                   Icons.price_change,
                   color: Colors.grey,
                 ),
+                trailing: Icon(Icons.chevron_right),
               ),
             ),
             itemCount: 10,
