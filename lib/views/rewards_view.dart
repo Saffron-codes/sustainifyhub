@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class RewardsView extends StatelessWidget {
-  const RewardsView({Key? key});
+  const RewardsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    int unlockingValue = 10; // Initial value for unlocking
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Rewards"),
@@ -21,7 +19,7 @@ class RewardsView extends StatelessWidget {
           ),
           Text(
             "Rewards Earned...",
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           SizedBox(
             height: 10,
@@ -29,36 +27,20 @@ class RewardsView extends StatelessWidget {
           ListView.builder(
             shrinkWrap: true,
             physics: BouncingScrollPhysics(),
-            itemBuilder: (context, index) {
-              if (index < 2) {
-                return Card(
-                  child: ListTile(
-                    title: Text("Level ${index + 1}"),
-                    subtitle: Text("Level Completed"),
-                    leading: Icon(
-                      Icons.done,
-                      color: Colors.green,
-                    ),
-                    trailing: Icon(Icons.chevron_right),
-                  ),
-                );
-              } else {
-                unlockingValue += 10; // Increment the unlocking value
-                return Card(
-                  child: ListTile(
-                    title: Text("Level ${index + 1}"),
-                    subtitle: Text("Earn ${(index + 1) + unlockingValue} to unlock"),
-                    leading: Icon(
-                      Icons.price_change,
-                      color: Colors.grey,
-                    ),
-                    trailing: Icon(Icons.chevron_right),
-                  ),
-                );
-              }
-            },
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                title: Text("Level ${index + 1}"),
+                subtitle: Text(
+                    "Earn ${(index + 1) + Random().nextInt(10) * 10} to unlock"),
+                leading: Icon(
+                  Icons.price_change,
+                  color: Colors.grey,
+                ),
+                trailing: Icon(Icons.chevron_right),
+              ),
+            ),
             itemCount: 10,
-          ),
+          )
         ],
       ),
     );
@@ -66,14 +48,16 @@ class RewardsView extends StatelessWidget {
 }
 
 class _RewardCard extends StatelessWidget {
-  const _RewardCard({Key? key});
+  const _RewardCard({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Container(
         height: 180,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.sizeOf(context).width,
         padding: EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,12 +72,12 @@ class _RewardCard extends StatelessWidget {
                       "250",
                       style: Theme.of(context)
                           .textTheme
-                          .headline5
+                          .displaySmall
                           ?.copyWith(fontWeight: FontWeight.w600),
                     ),
                     Text(
                       "Your Points",
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],
                 ),
@@ -108,7 +92,7 @@ class _RewardCard extends StatelessWidget {
             Spacer(),
             Align(
               alignment: Alignment.center,
-              child: ElevatedButton(
+              child: FilledButton(
                 onPressed: () {},
                 child: Text("Redeem Now"),
               ),
