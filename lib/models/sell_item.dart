@@ -1,5 +1,5 @@
 class SurplusProduct {
-  final int id;
+  // final int id;
   final String name;
   final int quantity;
   final String amountUnit;
@@ -8,7 +8,7 @@ class SurplusProduct {
   final int amount;
 
   const SurplusProduct({
-    required this.id,
+    // required this.id,
     required this.name,
     required this.quantity,
     required this.amountUnit,

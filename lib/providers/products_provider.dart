@@ -19,8 +19,8 @@ class ProductsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void buyProduct(int id) {
-    _products.removeAt(id);
+  void buyProduct(SurplusProduct product) {
+    _products.remove(product);
     notifyListeners();
   }
 

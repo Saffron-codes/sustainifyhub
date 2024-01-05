@@ -25,15 +25,24 @@ class _SurplusProductsSellViewState extends State<SurplusProductsSellView> {
         ],
       ),
       floatingActionButton: Consumer<ProductsProvider>(
-          builder: (context, productsProvider, child) {
-        return productsProvider.myproducts.isNotEmpty
-            ? FloatingActionButton.extended(
-                onPressed: () => productsProvider.sellProduct(),
-                label: Text('Sell'),
-                icon: Icon(Icons.sell_rounded),
-              )
-            : Container();
-      }),
+        builder: (context, productsProvider, child) {
+          return productsProvider.myproducts.isNotEmpty
+              ? FloatingActionButton.extended(
+                  onPressed: () {
+                    productsProvider.sellProduct();
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("Successfully added items"),
+                      ),
+                    );
+                  },
+                  label: Text('Sell'),
+                  icon: Icon(Icons.sell_rounded),
+                )
+              : Container();
+        },
+      ),
     );
   }
 }
@@ -63,7 +72,7 @@ class _SellFormState extends State<_SellForm> {
 
   @override
   Widget build(BuildContext context) {
-    final productsProvider = context.read<ProductsProvider>();
+    final productsProvider = Provider.of<ProductsProvider>(context);
     return ListView(
       padding: EdgeInsets.all(18),
       physics: BouncingScrollPhysics(),
@@ -166,7 +175,7 @@ class _SellFormState extends State<_SellForm> {
             child: FilledButton(
               onPressed: () {
                 final item = SurplusProduct(
-                    id: productsProvider.products.length + 1,
+                    // id: productsProvider.products.length,
                     name: _nameController.text,
                     quantity: int.parse(_quantityController.text),
                     amountUnit: amountOption,

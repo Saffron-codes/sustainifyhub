@@ -72,7 +72,12 @@ class SurplusProductsBuyView extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  // Add functionality for Buy button
+                                  provider.buyProduct(products[i]);
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text("Items added to your cart"),
+                                    ),
+                                  );
                                 },
                                 child: Text("Buy"),
                               ),
