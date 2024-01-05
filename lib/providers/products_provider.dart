@@ -5,12 +5,17 @@ class ProductsProvider extends ChangeNotifier {
   List<SurplusProduct> _products = [];
 
   List<SurplusProduct> _myproducts = [];
+  List<SurplusProduct> _filteredItems = [];
 
-  List<SurplusProduct> get products => _products;
+  List<SurplusProduct> get products =>
+      _filteredItems.isNotEmpty ? _filteredItems : _products;
   List<SurplusProduct> get myproducts => _myproducts;
 
   void sellProduct() {
-    _products = _myproducts;
+    for (var product in _myproducts) {
+      _products.add(product);
+    }
+    _myproducts = [];
     notifyListeners();
   }
 
@@ -25,13 +30,14 @@ class ProductsProvider extends ChangeNotifier {
   }
 
   void searchProducts(String query) {
-    final list = _products;
-    if (query.isNotEmpty) {
-      _products =
-          _products.where((element) => element.name.contains(query)).toList();
-      notifyListeners();
+    if (query.isEmpty) {
+      _filteredItems = [];
+    } else {
+      _filteredItems = _products
+          .where(
+              (item) => item.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
     }
-    _products = list;
     notifyListeners();
   }
 }

@@ -29,8 +29,8 @@ class ScrapesView extends StatelessWidget {
       },
       {
         "title": "Glass Waste",
-        "image": "https://i0.wp.com/www.circularonline.co.uk/wp-content/uploads/2019/08/British-Glass-Issues-Open-Letter.png"
-             
+        "image":
+            "https://i0.wp.com/www.circularonline.co.uk/wp-content/uploads/2019/08/British-Glass-Issues-Open-Letter.png"
       }
     ];
     return SafeArea(
@@ -69,8 +69,8 @@ class _WasteCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                width: 70,
-                height: 70,
+                width: 56,
+                height: 56,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(

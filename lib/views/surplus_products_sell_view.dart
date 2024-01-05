@@ -199,7 +199,10 @@ class _SellingList extends StatelessWidget {
           child: Column(
             children: [
               Align(
-                child: Text("My List",style: Theme.of(context).textTheme.headlineSmall,),
+                child: Text(
+                  "My List",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
                 alignment: Alignment.centerLeft,
               ),
               ListView.builder(

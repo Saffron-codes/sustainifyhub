@@ -18,7 +18,7 @@ class RewardsView extends StatelessWidget {
             height: 20,
           ),
           Text(
-            "Rewards Earned...",
+            "Rewards Earned",
             style: Theme.of(context).textTheme.titleMedium,
           ),
           SizedBox(
@@ -34,7 +34,7 @@ class RewardsView extends StatelessWidget {
                     "Earn ${(index + 1) + Random().nextInt(10) * 10} to unlock"),
                 leading: Icon(
                   Icons.price_change,
-                  color: Colors.grey,
+                  // color: Colors.grey,
                 ),
                 trailing: Icon(Icons.chevron_right),
               ),

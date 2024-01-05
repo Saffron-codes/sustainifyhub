@@ -13,8 +13,8 @@ class SurplusProductsBuyView extends StatelessWidget {
         title: Text("Buy Products"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(14.0),
-        child: Column(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
           children: [
             TextField(
               decoration: InputDecoration(
@@ -26,6 +26,9 @@ class SurplusProductsBuyView extends StatelessWidget {
               onChanged: (value) {
                 provider.searchProducts(value);
               },
+            ),
+            SizedBox(
+              height: 18,
             ),
             Consumer<ProductsProvider>(
               builder: (context, provider, child) {
